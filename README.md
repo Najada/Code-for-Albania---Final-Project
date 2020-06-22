@@ -1,7 +1,7 @@
 # Code for Albania - Final-Project
 
 
-## Teams:<br/>
+## Teams<br/>
 Franc & Era <br/>
 Ernest & Endrit <br/>
 Ebi & Eldri <br/>
