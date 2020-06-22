@@ -1,5 +1,11 @@
 # Code for Albania - Final-Project
 
+
+Teams:
+Franc & Era <br/>
+Ernest & Endrit <br/>
+Ebi & Eldri <br/>
+
 Installation
 # Clone project
 cd /path/to/home/dir/of/your/projects<br/>
