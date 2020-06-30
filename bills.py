@@ -191,10 +191,6 @@ answer=input("To create a new bill press 1, to find an exisitng bill press 2!!")
 
 if answer== 1:
     BillBase(input("Enter the ID"), input("How to u want to name this bill"),input(" Enter the year of the payment"),input(" Enter the month of the payment"),input(" Enter the day of the payment"), input("Enter the payment vaule"))
-elif answer ==2:
 
-
-else:
-    print("This is not a valid answer")
 
 
