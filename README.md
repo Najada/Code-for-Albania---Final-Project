@@ -11,3 +11,4 @@ Ebi & Eldri <br/>
 cd /path/to/home/dir/of/your/projects<br/>
 git clone git@github.com:Najada/Code-for-Albania---Final-Project.git<br/>
 cd Code-for-Albania---Final-Project<br/>
+[![Run on Repl.it](https://repl.it/badge/github/Najada/Code-for-Albania---Final-Project)](https://repl.it/github/Najada/Code-for-Albania---Final-Project)
