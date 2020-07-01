@@ -33,155 +33,113 @@ class BillBase:
         return cls(tokens[0],tokens[1])
 
 
-class WaterBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class WaterBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class LightBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class LightBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class ElectricBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class ElectricBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class CableBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class CableBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class RentBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class RentBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class House_InsuranceBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class House_InsuranceBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class MortgageBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class MortgageBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class Bank_FeesBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class Bank_FeesBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class InternetBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class InternetBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class MedicalBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class MedicalBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class CellphoneBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class CellphoneBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class Vehicle_InsuranceBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class Vehicle_InsuranceBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class Different_MembershipBill:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class Different_MembershipBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
 
-class Loans:
-    def __init__(BillBase):
-        self._ID = billID
-        self._type = billType
-        self._paydate =(year,month,day)
-        self._payvalue = payvalue
+class Loans(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,

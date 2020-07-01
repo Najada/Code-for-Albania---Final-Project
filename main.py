@@ -14,10 +14,22 @@ from bills import BillBase
 from reports import ReportBase
 from database import BaseObject
 from os import system , name
+from bills import WaterBill
+from bills import LightBill
+from bills import ElectricBill
+from bills import CableBill
+from bills import RentBill
+from bills import House_InsuranceBill
+from bills import MortgageBill
+from bills import Bank_FeesBill
+from bills import InternetBill
+from bills import MedicalBill
+from bills import CellphoneBill
+from bills import Vehicle_InsuranceBill
+from bills import Different_MembershipBill
+from bills import Loans
 
-
-
-
+db=Database(dbname="Bills")
 
 class User(BaseObject):
     def __init__(self,username,password,usertype):
@@ -141,28 +153,30 @@ def main():
             break
 
 
+def Creating_NewBill(an):
+        ID=input("Enter the id of the bill")
+        year=input("Enter the year")
+        month=input("Enter the month")
+        day=input("Enter the day")
+        price=input("Enter the price of the bill")
+
+        bill=an(ID,an,year,month,day,price)
+        db.createtableifnotexists("MonthlyBills",an,an.fromline)
+        db.appendObjectsInto("MonthlyBills",[bill])
+        ans3="0"
+        ans4="0"
+        print(bill.toString())
 
 if __name__ == '__main__':
     main()
-
-ans=True
-while ans:
-    print ("""
-    1.Anual Bills
-    2.Monthly Bills
-    3.Other Bills
-    4.Exit/Quit
+def AnualBills():
+    print("\n -Anual Bills- opened")
+    print("""
+    1.
+    2.
     """)
-    ans=input(">>What option would you like to choose? ")
-    if ans=="1":
-      print("\n -Anual Bills- opened")
-      print("""
-        1.
-        2.
-        """)
-
-      ans2=input(">>Which category would you like to access? ")
-      if ans2=="1":
+    ans2=input(">>Which category would you like to access? ")
+    if ans2=="1":
         print("""
         1.
         2.
@@ -172,7 +186,7 @@ while ans:
         """)
         print("CATEGORY-")
         ans3 = input("Which information would you like to access? ")
-      if ans2=="2":
+    if ans2=="2":
         print("""
         1.
         2.
@@ -182,15 +196,16 @@ while ans:
         """)
         print("CATEGORY-")
         ans4 = input("Which information would you like to access? ")
-    elif ans=="2":
-      print("\n -Monthly Bills- opened")
-      print("""
-        1.House related Bills
-        2.Other
-        """)
 
-      ans2=input(">>Which category would you like to access? ")
-      if ans2=="1":
+def MonthlyBills():
+    print("\n -Monthly Bills- opened")
+    print("""
+    1.House related Bills
+    2.Other
+    """)
+
+    ans2=input(">>Which category would you like to access? ")
+    if ans2=="1":
         print("""
         1.Cable
         2.House insurance
@@ -202,7 +217,28 @@ while ans:
         """)
         print("CATEGORY-House related bills")
         ans3 = input("Which information would you like to access? ")
-      if ans2=="2":
+        while ans3 =="1":
+            an=CableBill
+            Creating_NewBill(an)
+        while ans3 =="2":
+            an=House_InsuranceBill
+            Creating_NewBill(an)
+        while ans3 =="3":
+            an=LightBill
+            Creating_NewBill(an)
+        while ans3 =="4":
+            an=WaterBill
+            Creating_NewBill(an)
+        while ans3 =="5":
+            an=ElectricBill
+            Creating_NewBill(an)
+        while ans3 =="6":
+            an=RentBill
+            Creating_NewBill(an)
+        while ans3 =="7":
+            an=MonthlyBills
+            Creating_NewBill(an)
+    if ans2=="2":
         print("""
         1.Different memberships
         2.Vehical insurance
@@ -214,15 +250,38 @@ while ans:
         """)
         print("CATEGORY-OTHER")
         ans4 = input("Which information would you like to access? ")
+        while ans4 =="1":
+            an=Different_MembershipBill
+            Creating_NewBill(an)
+        while ans4 =="2":
+            an=Vehicle_InsuranceBill
+            Creating_NewBill(an)
+        while ans4 =="3":
+            an=CellphoneBill
+            Creating_NewBill(an)
+        while ans4 =="4":
+            an=InternetBill
+            Creating_NewBill(an)
+        while ans4 =="5":
+            an=MedicalBill
+            Creating_NewBill(an)
+        while ans4 =="6":
+            an=Bank_FeesBill
+            Creating_NewBill(an)
+        while ans4 =="7":
+            an=Loans
+            Creating_NewBill(an)
 
-    elif ans=="3":
-      print("-Other Bills-")
-      print("""
-      1.Transportation
-      2.Other
-      """)
-      ans2=input(">>Which category would you like to access? ")
-      if ans2=="1":
+
+
+def OtherBills():
+    print("-Other Bills-")
+    print("""
+    1.Transportation
+    2.Other
+    """)
+    ans2=input(">>Which category would you like to access? ")
+    if ans2=="1":
         print("""
         1.PlaneTickets
         2.FerryTickets
@@ -231,7 +290,20 @@ while ans:
         """)
         print("CATEGORY-TRANSPORTATION")
         ans3 = input("Which information would you like to access? ")
-      if ans2=="2":
+        while ans3 =="1":
+            an=PlaneTickets
+            Creating_NewBill(an)
+        while ans3 =="2":
+            an=FerryTickets
+            Creating_NewBill(an)
+        while ans3 =="3":
+            an=TrainTickets
+            Creating_NewBill(an)
+        while ans3 =="4":
+            an=VanTickets
+            Creating_NewBill(an)
+
+    if ans2=="2":
         print("""
         1.ChemicalCleaning
         2.OnlineLibrary
@@ -241,6 +313,40 @@ while ans:
         """)
         print("CATEGORY-OTHER")
         ans4 = input("Which information would you like to access? ")
+        while ans4 =="1":
+            an=ChemicalCleaning
+            Creating_NewBill(an)
+        while ans4 =="2":
+            an=OnlineLibrary
+            Creating_NewBill(an)
+        while ans4 =="3":
+            an=CarRent
+            Creating_NewBill(an)
+        while ans4 =="4":
+            an=ConcertTickets
+            Creating_NewBill(an)
+        while ans4 =="5":
+            an=Handyman
+            Creating_NewBill(an)
+
+
+ans=True
+while ans:
+    print ("""
+    1.Anual Bills
+    2.Monthly Bills
+    3.Other Bills
+    4.Exit/Quit
+    """)
+    ans=input(">>What option would you like to choose? ")
+    if ans=="1":
+        AnualBills()
+
+    elif ans=="2":
+        MonthlyBills()
+
+    elif ans=="3":
+      OtherBills()
     elif ans=="4":
       print("\n Goodbye")
       ans = None
