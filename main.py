@@ -18,7 +18,6 @@ from os import system , name
 
 
 
-
 class User(BaseObject):
     def __init__(self,username,password,usertype):
         self.__username = username
