@@ -144,6 +144,140 @@ class Loans(BillBase):
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue))
+class KolaudimiBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class Car_InsuranceBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class Car_ServiceBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class School_TaxBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class BooksBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class FoodBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class School_TransportBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class CoursesBill(BillBase):
+    def __init__(self,billID,billType,year,month,day,payvalue):
+            super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+class PlaneTickets:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class FerryTickets:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class TrainTickets:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class Handyman:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class ConcertTickets:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class OnlineLibrary:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class VanTickets:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class ChemicalCleaning:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
+
+class CarRent:
+    def __init__(billID,billType,year,month,day,payvalue):
+        super().__init__(billID,billType,year,month,day,payvalue)
+
+    def output_all(self):
+            print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
+            self.payvalue))
 
 answer=input("To create a new bill press 1, to find an exisitng bill press 2!!")
 

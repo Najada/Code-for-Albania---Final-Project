@@ -28,6 +28,14 @@ from bills import CellphoneBill
 from bills import Vehicle_InsuranceBill
 from bills import Different_MembershipBill
 from bills import Loans
+from bills import KolaudimiBill
+from bills import Car_InsuranceBill
+from bills import Car_ServiceBill
+from bills import School_TaxBill
+from bills import BooksBill
+from bills import FoodBill
+from bills import School_TransportBill
+from bills import CoursesBill
 
 db=Database(dbname="Bills")
 
@@ -169,33 +177,68 @@ def Creating_NewBill(an):
 
 if __name__ == '__main__':
     main()
+
 def AnualBills():
     print("\n -Anual Bills- opened")
     print("""
-    1.
-    2.
+    1. Car related bills
+    2. School related bills
+    3. Other
     """)
     ans2=input(">>Which category would you like to access? ")
+
     if ans2=="1":
         print("""
-        1.
-        2.
-        3.
-        4.
-        5.
+        1. Kolaudimi
+        2. Car insurance
+        3. Car service
         """)
         print("CATEGORY-")
         ans3 = input("Which information would you like to access? ")
+
+        while ans3 =="1":
+            an = KolaudimiBill
+            Creating_NewBill(an)
+
+        while ans3 =="2":
+            an = Car_InsuranceBill
+            Creating_NewBill(an)
+
+        while ans3 =="3":
+            an = Car_ServiceBill
+            Creating_NewBill(an)
+
+
     if ans2=="2":
         print("""
-        1.
-        2.
-        3.
-        4.
-        5.
+        1. School tax
+        2. Books
+        3. Food
+        4. School Transport
+        5. Courses
         """)
         print("CATEGORY-")
         ans4 = input("Which information would you like to access? ")
+
+        while ans4 =="1":
+            an = School_TaxBill
+            Creating_NewBill(an)
+
+        while ans4 =="2":
+            an = BooksBill
+            Creating_NewBill(an)
+
+        while ans4 =="3":
+            an = FoodBill
+            Creating_NewBill(an)
+
+        while ans4 =="4":
+            an = School_TransportBill
+            Creating_NewBill(an)
+
+        while ans4 =="5":
+            an=CoursesBill
+            Creating_NewBill(an)
 
 def MonthlyBills():
     print("\n -Monthly Bills- opened")
