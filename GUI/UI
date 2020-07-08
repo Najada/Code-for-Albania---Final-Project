@@ -1,0 +1,150 @@
+from tkinter import*
+
+
+class App:
+  def __init__(self,root):
+    self.root = root
+    self.root.geometry("1450x700+0+0")
+    self.root.title("GUI")
+
+
+    bg_color = "#292929"
+    fg_color = "#B0B0B0"	
+
+
+
+    title = Label(self.root, text = "Billing System", fg =fg_color, bd = 12, relief =GROOVE, bg = "#292929" , font = ("times new roman",30,"bold"),pady = 2).pack(fill = X)
+
+
+    #================= User Frame ==================================================
+    F1 = LabelFrame(self.root, text = "User details",font = ("times new roman",15,"bold"), fg = fg_color, bg = bg_color)
+    F1.place(x =0, y = 80, relwidth = 1)
+
+
+    #================= User Name ====================================================
+    name_lbl = Label(F1, text = "Enter your name",font = ("times new roman",18,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 0, padx = 20, pady = 5)
+
+    name_txt = Entry(F1, width = 15, font = "arial 15", relief = SUNKEN).grid(row = 0, column = 1, padx = 10, pady = 5)
+   
+   
+    #================= User Phone Number =============================================
+    phone_no_lbl = Label(F1, text = "Phone Number",font = ("times new roman",18,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 2, padx = 20, pady = 5)
+
+    phone_no_txt = Entry(F1, width = 15, font = "arial 15", relief = SUNKEN).grid(row = 0, column = 3, padx = 10, pady = 5)
+   
+   
+    #================= Bill Number ====================================================
+    bill_no_lbl = Label(F1, text = "Bill Number",font = ("times new roman",18,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 4, padx = 20, pady = 5)
+
+    bill_no_txt = Entry(F1, width = 15, font = "arial 15", relief = SUNKEN).grid(row = 0, column = 5, padx = 10, pady = 5)
+   
+   #================= Search ==========================================================
+    bill_search = Button(F1, text ="Search", width =10,font ="arial 12 bold", bd = 7).grid(row = 0, column = 6, padx = 10, pady = 10)
+
+
+
+
+  #================= Monthly Bills =====================================================
+    F2 = LabelFrame(self.root, text = "Monthly Bills",font = ("times new roman",20,"bold"), fg = fg_color, bg = bg_color)
+    F2.place(x =5, y = 177, width = 370, height = 380 )
+
+    hause_lbl = Label(F2, text = "House Related Bills", font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 0, padx = 5, pady = 5)
+
+    cable_lbl = Button(F2, text = "Cable",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 1, column = 0, padx = 5, pady = 5)
+    house_lbl = Button(F2, text = "House insurance",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 2, column = 0, padx = 5, pady = 5)
+    water_lbl = Button(F2, text = "Water Bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 3, column = 0, padx = 5, pady = 5)
+    electricity_lbl = Button(F2, text = "Electricity",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 4, column = 0, padx = 5, pady = 5)
+    rent_lbl = Button(F2, text = "Rent",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 5, column = 0, padx = 5, pady = 5)
+    mortgage_lbl = Button(F2, text = "Mortgage",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 6, column = 0, padx = 5, pady = 5)
+
+
+    other_lbl = Label(F2, text = "Other Monthly Bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 1, padx = 40, pady = 5)
+
+    cable_lbl = Button(F2, text = "Different memberships",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 1, column = 1, padx = 10, pady = 5)
+    cel_lbl = Button(F2, text = "Cellphone bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 2, column = 1, padx = 5, pady = 5)
+    internet_lbl = Button(F2, text = "Internet bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 3, column = 1, padx = 5, pady = 5)
+    medical_lbl = Button(F2, text = "CablMedical bills",font = ("times new roman",13,"bold"),fg = "white", bg = bg_color).grid(row = 4, column = 1, padx = 5, pady = 5)
+    bank_lbl = Button(F2, text = "Bank fees",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 5, column = 1, padx = 5, pady = 5)
+    loans_lbl = Button(F2, text = "Loans",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 6, column = 1, padx = 5, pady = 5)
+
+
+
+  #================= Annual Bills =========================================================
+    F3 = LabelFrame(self.root, text = "Annual Bills",font = ("times new roman",20,"bold"), fg = fg_color, bg = bg_color)
+    F3.place(x =390, y = 177, width = 350, height = 380 )
+
+    car_lbl = Label(F3, text = "Car Related Bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 0, padx = 5, pady = 5)
+
+    Kolaudimi_lbl = Button(F3, text = "Kolaudimi",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 1, column = 0, padx = 10, pady = 5)
+    Car_insurance_lbl = Button(F3, text = "Car insurance",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 2, column = 0, padx = 10, pady = 5)
+    Car_service_lbl = Button(F3, text = "Car service",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 3, column = 0, padx = 10, pady = 5)
+    
+
+
+
+    school_lbl = Label(F3, text = "Education Bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 1, padx = 40, pady = 5)
+
+
+    School_tax_lbl = Button(F3, text = "School tax",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 1, column = 1, padx = 10, pady = 5)
+    Books_lbl = Button(F3, text = "Books",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 2, column = 1, padx = 10, pady = 5)
+    Food_lbl = Button(F3, text = "Food",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 3, column = 1, padx = 10, pady = 5)
+    School_Transport_lbl = Button(F3, text = "School Transport",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 4, column = 1, padx = 10, pady = 5)
+    Courses_lbl = Button(F3, text = "Courses",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 5, column = 1, padx = 10, pady = 5)
+    
+  
+
+  #================= Other Bills ===========================================================
+
+    F4 = LabelFrame(self.root, text = "Other Bills",font = ("times new roman",20,"bold"), fg = fg_color, bg = bg_color)
+    F4.place(x =755, y = 177, width = 350, height = 380 )
+
+    Transport_lbl = Label(F4, text = "Transport Related Bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 0, padx = 5, pady = 5)
+
+    Airplane_lbl = Button(F4, text = "Air plane Tickets",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 1, column = 0, padx = 10, pady = 5)
+    Train_lbl = Button(F4, text = "Train Tickets",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 2, column = 0, padx = 10, pady = 5)
+    Ferry_lbl = Button(F4, text = "Ferry Tickets",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 3, column = 0, padx = 10, pady = 5)
+    Van_lbl = Button(F4, text = "Van Tickets",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 4, column = 0, padx = 10, pady = 5)
+
+
+
+    Other_lbl = Label(F4, text = "Other Bills",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 0, column = 1, padx = 5, pady = 5)
+
+    Chemical_lbl = Button(F4, text = "Chemical Cleaning",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 1, column = 1, padx = 10, pady = 5)
+    Car_lbl = Button(F4, text = "Car Rent",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 2, column = 1, padx = 10, pady = 5)
+    Library_lbl = Button(F4, text = "Online Library",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 3, column = 1, padx = 10, pady = 5)
+    Concert_lbl = Button(F4, text = "Concert Tickets",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 4, column = 1, padx = 10, pady = 5)
+    Handyman_lbl = Button(F4, text = "Handyman",font = ("times new roman",13,"bold"), fg = "white", bg = bg_color).grid(row = 5, column = 1, padx = 10, pady = 5)
+
+
+    #==============Bill Area=================================================================
+
+    F5 = Frame(self.root, bd=10, relief = "ridge")
+    F5.place(x = 1120, y = 177, width = 300, height = 380)
+    bill_title = Label(F5, text = "Bill Area", font = "arial 15 bold", bd = 7, relief = GROOVE).pack(fill = X)
+    scrol_y = Scrollbar(F5, orient = VERTICAL)
+    self.txtarea = Text(F5, yscrollcommand = scrol_y.set) 
+    scrol_y.pack(side = RIGHT, fill = Y)
+    scrol_y.config(command = self.txtarea.yview)
+    self.txtarea.pack()
+
+    #=================Billing Menu============================================================
+
+
+    F6 = LabelFrame(self.root, text = "Billing Menu",font = ("times new roman",15,"bold"), fg = "gold", bg = bg_color)
+    F6.place(x = 0, y = 560, relwidth = 1, height = 140 )
+
+    m1_lbl = Label(F6, text = "Sum of Monthly Bills", font = ("times new roman",13,"bold"), bg = bg_color, fg = fg_color).grid(row = 0, column = 0, padx = 15, pady = 1)
+    m1_txt = Entry(F6, width = 18, font = "arial 10 bold", bd = 7).grid(row = 1, column = 0, padx = 15, pady = 1)
+
+
+    m2_lbl = Label(F6, text = "Sum of Annual Bills", font = ("times new roman",13,"bold"), bg = bg_color, fg = fg_color).grid(row = 0, column = 2, padx = 300, pady = 1)
+    m2_txt = Entry(F6, width = 18, font = "arial 10 bold", bd = 7).grid(row = 1, column = 2, padx = 15, pady = 15)
+
+
+    m3_lbl = Label(F6, text = "Sum of Other Bills", font = ("times new roman",13,"bold"), bg = bg_color, fg = fg_color).grid(row = 0, column = 3, padx = 0, pady = 1)
+    m3_txt = Entry(F6, width = 18, font = "arial 10 bold", bd = 7).grid(row = 1, column = 3, padx = 15, pady = 15)
+
+root = Tk()
+text = Text(root)
+obj = App(root)
+root.mainloop()
