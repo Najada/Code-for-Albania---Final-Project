@@ -50,16 +50,22 @@ class User(BaseObject):
             self._usertype = "admin"
         else :self._usertype = "user"
 
+    def getUsername(self):
+        return self.__username
+    def getPass(self):
+        return self.__password
+    def getEmail(self):
+        return self._email
 
     def toString(self):
-        return str(self.__username)+","+str(self.__password)+","+ str(self._usertype)
+        return str(self.__username)+","+str(self.__password)+","+ str(self._usertype)+","+str(self._email)
 
     @classmethod
     def fromLine(cls,line):
         tokens = line.split(",")
-        if(len(tokens)==3):
-            return cls(tokens[0],tokens[1],tokens[2])
-        else : return cls("guest","guest","guest")
+        if(len(tokens)==4):
+            return cls(tokens[0].strip(),tokens[1].strip(),tokens[2].strip(),tokens[3].strip())
+        else : return cls("guest","guest","guest","guest")
 
     def check(self,password):
         return self.__password==password
@@ -111,13 +117,13 @@ class Activity:
     def start(self):
         # wellcome the user
         # present the option
-        print("1 for option 1")
-        print("2 for option 2")
+        print("1 for register")
+        print("2 for login")
         opt = input(">")
-        if opt==1:
-            option1(self.__currentuser,self.__db)
-        elif opt==2:
-            option2()
+        if opt=='1':
+            newUser()
+        elif opt=='2':
+            oldUser()
         elif opt == 3:
             option3()
         else :
@@ -141,12 +147,14 @@ def main():
 
     while True:
         # get user info
+        db.createtableifnotexists("users",User,User.fromLine)
         users = db.getObjectsFrom("users")
+        print(users[1].getEmail(),users[1].getPass())
         print("all users read")
         if(len(users)==0):
             # enter add new admin wizard
             print("logging in as admin ")
-            curruser = User("admin","admin","admin")
+            curruser = User("admin","admin","admin","admin")
             Activity(db,curruser).start()
         else:
             # inform the user that to enter he needs to enter an passsword.
@@ -154,39 +162,46 @@ def main():
             # enter password
             # check user validity
             #db.getObjectsFrom("users",x=x.check(username))
-            curruser = User("me","me","me")
+            curruser = User("me","me","me","me")
             Activity(db,curruser).start()
         print("do you want to login : [y]")
         if input(">")!="y":
             break
+
 def Creating_NewUser():
     Username=str(input("Please enter your username"))
     Email=str(input("Please enter your email"))
     Password=str(input("Please enter your password"))
-    db.createtableifnotexists("users",User,User.fromline)  #This one is the problem it sais User has no attributes
+    #user=User(Username,Password,'',Email)
+    #db.createtableifnotexists("users",User,User.fromline)  #This one is the problem it sais User has no attributes
+    return Username,Email,Password
 
 def OldUser():
     Email=str(input("Please enter your email"))
     Password=str(input("Please enter your password"))
+    return Email.strip(),Password.strip()
 
 def sorry():
     print("Sorry we couldnt help!")
 
 def newUser():
-    Creating_NewUser()
-    users=db.getObjectsFrom("users",lambda x:(x._username==Username))
+    Username,Email,Password=Creating_NewUser()
+    db.createtableifnotexists("users",User,User.fromLine)
+    users=db.getObjectsFrom("users",lambda x:(x.getUsername()==Username))
     if len(users)>0 :
         print("\nLogin name already exist!\n")
     else:
-        user=User(Username,Email,Password)
-        db.appendObjectsInto("users",[user])
-        print(User.toString())
-        print("\nUser created\n")
-    oldUser()
+      user=User(Username,Password,"user",Email)
+      db.appendObjectsInto("users",[user])
+      print(user.toString())
+      print("\nUser created\n")
+      oldUser()
 
 def oldUser():
-    OldUser()
-    users=db.getObjectsFrom("users",lambda x:(x._email==Email and x._password==Password))
+    Email,Password=OldUser()
+    db.createtableifnotexists("users",User,User.fromLine)
+    users=db.getObjectsFrom("users",lambda x:(x.getEmail()==Email and x.check(Password)))
+    #print(users[0].getUsername())
     if len(users)==1:
         print("\nLogin successful!\n")
     else:
@@ -211,9 +226,9 @@ def Creating_NewBill(an):
         month=input("Enter the month")
         day=input("Enter the day")
         price=input("Enter the price of the bill")
-        user=Username
+        #user=Username
 
-        bill=an(ID,an,year,month,day,price,user)
+        bill=an(ID,an,year,month,day,price)
         db.createtableifnotexists("bills",an,an.fromline)
         db.appendObjectsInto("bills",[bill])
         ans3="0"
