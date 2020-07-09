@@ -8,6 +8,7 @@ class BillBase:
         self._type = billType
         self._paydate =(year,month,day)
         self._payvalue = payvalue
+        self._user=user
 
     def getID(self):return self._ID
 
@@ -17,18 +18,20 @@ class BillBase:
 
     def getPaydate(self):return self._paydate
 
-    def getUser(self):return self._username
+    def getUser(self):return self._user
 
     def getPayvalue(self):return self._payvalue
 
     def setPayvalue(self,newPayvalue):self._payvalue = newPayvalue
+
+    def setUser(self,newUser):self._user=newUser
 
     # todo other getters and setters
     # ...
     # ...
 
     def toString(self):
-        return str(self._ID)+","+str(self._type)+"\n"+str(self._paydate)+","+str(self._payvalue)+","+str(self._username)
+        return str(self._ID)+","+str(self._type)+"\n"+str(self._paydate)+","+str(self._payvalue)+","+str(self._user)
     @classmethod
     def fromline(cls,line):
         tokens = line.split(",")
@@ -37,7 +40,7 @@ class BillBase:
 
 class WaterBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -45,7 +48,7 @@ class WaterBill(BillBase):
 
 class LightBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -53,7 +56,7 @@ class LightBill(BillBase):
 
 class ElectricBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -61,7 +64,7 @@ class ElectricBill(BillBase):
 
 class CableBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -69,7 +72,7 @@ class CableBill(BillBase):
 
 class RentBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -77,7 +80,7 @@ class RentBill(BillBase):
 
 class House_InsuranceBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -85,7 +88,7 @@ class House_InsuranceBill(BillBase):
 
 class MortgageBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -93,7 +96,7 @@ class MortgageBill(BillBase):
 
 class Bank_FeesBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -101,7 +104,7 @@ class Bank_FeesBill(BillBase):
 
 class InternetBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -109,7 +112,7 @@ class InternetBill(BillBase):
 
 class MedicalBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -117,7 +120,7 @@ class MedicalBill(BillBase):
 
 class CellphoneBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -125,7 +128,7 @@ class CellphoneBill(BillBase):
 
 class Vehicle_InsuranceBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -133,7 +136,7 @@ class Vehicle_InsuranceBill(BillBase):
 
 class Different_MembershipBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -141,14 +144,14 @@ class Different_MembershipBill(BillBase):
 
 class Loans(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue,self.user))
 class KolaudimiBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -156,7 +159,7 @@ class KolaudimiBill(BillBase):
 
 class Car_InsuranceBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -164,7 +167,7 @@ class Car_InsuranceBill(BillBase):
 
 class Car_ServiceBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -172,7 +175,7 @@ class Car_ServiceBill(BillBase):
 
 class School_TaxBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -180,7 +183,7 @@ class School_TaxBill(BillBase):
 
 class BooksBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -188,7 +191,7 @@ class BooksBill(BillBase):
 
 class FoodBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -196,7 +199,7 @@ class FoodBill(BillBase):
 
 class School_TransportBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -204,14 +207,14 @@ class School_TransportBill(BillBase):
 
 class CoursesBill(BillBase):
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-            super().__init__(billID,billType,year,month,day,payvalue)
+            super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
             self.payvalue,self.user))
 class PlaneTickets:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -219,7 +222,7 @@ class PlaneTickets:
 
 class FerryTickets:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -227,7 +230,7 @@ class FerryTickets:
 
 class TrainTickets:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -235,7 +238,7 @@ class TrainTickets:
 
 class Handyman:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -243,7 +246,7 @@ class Handyman:
 
 class ConcertTickets:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -251,7 +254,7 @@ class ConcertTickets:
 
 class OnlineLibrary:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -259,7 +262,7 @@ class OnlineLibrary:
 
 class VanTickets:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -267,7 +270,7 @@ class VanTickets:
 
 class ChemicalCleaning:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,
@@ -275,7 +278,7 @@ class ChemicalCleaning:
 
 class CarRent:
     def __init__(self,billID,billType,year,month,day,payvalue,user):
-        super().__init__(billID,billType,year,month,day,payvalue)
+        super().__init__(billID,billType,year,month,day,payvalue,user)
 
     def output_all(self):
             print( '{} \n{} \n{} \n{}'.format(self.ID,self.type, self.paydate,

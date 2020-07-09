@@ -38,9 +38,10 @@ from bills import School_TransportBill
 from bills import CoursesBill
 db=Database(dbname="db")
 
+
 class User(BaseObject):
     def __init__(self,Username,Password,usertype,Email):
-        self.__username = Username
+        self._username = Username
         self.__password = Password
         self._email=Email
         self.setUserType(usertype)
@@ -51,14 +52,14 @@ class User(BaseObject):
         else :self._usertype = "user"
 
     def getUsername(self):
-        return self.__username
+        return self._username
     def getPass(self):
         return self.__password
     def getEmail(self):
         return self._email
 
     def toString(self):
-        return str(self.__username)+","+str(self.__password)+","+ str(self._usertype)+","+str(self._email)
+        return str(self._username)+","+str(self.__password)+","+ str(self._usertype)+","+str(self._email)
 
     @classmethod
     def fromLine(cls,line):
@@ -109,33 +110,10 @@ def clearscreen(self):
     else:
         _ = system('clear')
 
-
 class Activity:
     def __init__(self,db,currentuser:User):
         self.__currentuser = currentuser
         self.__db = db
-    def start(self):
-        # wellcome the user
-        # present the option
-        print("1 for register")
-        print("2 for login")
-        opt = input(">")
-        if opt=='1':
-            newUser()
-        elif opt=='2':
-            oldUser()
-        elif opt == 3:
-            option3()
-        else :
-            print("goodbye")
-            return True
-
-
-        # take any option chosen by thew user
-
-
-        pass
-
 
 
 def main():
@@ -149,13 +127,12 @@ def main():
         # get user info
         db.createtableifnotexists("users",User,User.fromLine)
         users = db.getObjectsFrom("users")
-        print(users[1].getEmail(),users[1].getPass())
-        print("all users read")
         if(len(users)==0):
             # enter add new admin wizard
             print("logging in as admin ")
             curruser = User("admin","admin","admin","admin")
-            Activity(db,curruser).start()
+            break
+
         else:
             # inform the user that to enter he needs to enter an passsword.
             # enter username
@@ -163,10 +140,9 @@ def main():
             # check user validity
             #db.getObjectsFrom("users",x=x.check(username))
             curruser = User("me","me","me","me")
-            Activity(db,curruser).start()
-        print("do you want to login : [y]")
-        if input(">")!="y":
             break
+
+
 
 def Creating_NewUser():
     Username=str(input("Please enter your username"))
@@ -177,9 +153,9 @@ def Creating_NewUser():
     return Username,Email,Password
 
 def OldUser():
-    Email=str(input("Please enter your email"))
+    Username=str(input("Please enter your Username"))
     Password=str(input("Please enter your password"))
-    return Email.strip(),Password.strip()
+    return Username.strip(),Password.strip()
 
 def sorry():
     print("Sorry we couldnt help!")
@@ -198,14 +174,19 @@ def newUser():
       oldUser()
 
 def oldUser():
-    Email,Password=OldUser()
+    Username,Password=OldUser()
     db.createtableifnotexists("users",User,User.fromLine)
-    users=db.getObjectsFrom("users",lambda x:(x.getEmail()==Email and x.check(Password)))
-    #print(users[0].getUsername())
+    users=db.getObjectsFrom("users",lambda x:(x.getUsername()==Username and x.check(Password)))
+    global current_user
+    current_user=users[0].getUsername()
+    return current_user
     if len(users)==1:
         print("\nLogin successful!\n")
+
     else:
         print("\nUser doesn't exist or wrong password!\n")
+        print("Try again")
+        oldUser()
 
 def displayMenu():
     status = input("Are you registered user? y/n? Press q to quit")
@@ -220,23 +201,31 @@ def displayMenu():
 
 displayMenu()
 
-def Creating_NewBill(an):
+def Creating_NewBill(an,current_user):
         ID=input("Enter the id of the bill")
         year=input("Enter the year")
         month=input("Enter the month")
         day=input("Enter the day")
         price=input("Enter the price of the bill")
-        #user=Username
 
-        bill=an(ID,an,year,month,day,price)
+
+        bill=an(ID,an,year,month,day,price,current_user)
         db.createtableifnotexists("bills",an,an.fromline)
         db.appendObjectsInto("bills",[bill])
         ans3="0"
         ans4="0"
         print(bill.toString())
 
+def All_Bills(current_user):
+    db.createtableifnotexists("bills",BillBase,BillBase.fromline)
+    bills=db.getObjectsFrom("bills",lambda x:(x.getUsername()==current_user))
+    for bill in bills:
+        print(bil.toString)
+
 if __name__ == '__main__':
     main()
+
+
 
 def AnualBills():
     print("\n -Anual Bills- opened")
@@ -258,15 +247,15 @@ def AnualBills():
 
         while ans3 =="1":
             an = KolaudimiBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
         while ans3 =="2":
             an = Car_InsuranceBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
         while ans3 =="3":
             an = Car_ServiceBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
 
     if ans2=="2":
@@ -282,23 +271,23 @@ def AnualBills():
 
         while ans4 =="1":
             an = School_TaxBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
         while ans4 =="2":
             an = BooksBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
         while ans4 =="3":
             an = FoodBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
         while ans4 =="4":
             an = School_TransportBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
         while ans4 =="5":
             an=CoursesBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
 def MonthlyBills():
     print("\n -Monthly Bills- opened")
@@ -322,25 +311,25 @@ def MonthlyBills():
         ans3 = input("Which information would you like to access? ")
         while ans3 =="1":
             an=CableBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="2":
             an=House_InsuranceBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="3":
             an=LightBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="4":
             an=WaterBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="5":
             an=ElectricBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="6":
             an=RentBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="7":
             an=MonthlyBills
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
     if ans2=="2":
         print("""
         1.Different memberships
@@ -355,25 +344,25 @@ def MonthlyBills():
         ans4 = input("Which information would you like to access? ")
         while ans4 =="1":
             an=Different_MembershipBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="2":
             an=Vehicle_InsuranceBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="3":
             an=CellphoneBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="4":
             an=InternetBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="5":
             an=MedicalBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="6":
             an=Bank_FeesBill
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="7":
             an=Loans
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
 
 
@@ -395,16 +384,16 @@ def OtherBills():
         ans3 = input("Which information would you like to access? ")
         while ans3 =="1":
             an=PlaneTickets
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="2":
             an=FerryTickets
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="3":
             an=TrainTickets
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans3 =="4":
             an=VanTickets
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
     if ans2=="2":
         print("""
@@ -418,19 +407,19 @@ def OtherBills():
         ans4 = input("Which information would you like to access? ")
         while ans4 =="1":
             an=ChemicalCleaning
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="2":
             an=OnlineLibrary
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="3":
             an=CarRent
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="4":
             an=ConcertTickets
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
         while ans4 =="5":
             an=Handyman
-            Creating_NewBill(an)
+            Creating_NewBill(an,current_user)
 
 
 ans=True
@@ -439,7 +428,9 @@ while ans:
     1.Anual Bills
     2.Monthly Bills
     3.Other Bills
-    4.Exit/Quit
+    4.Check already existing bills
+    5.Exit/Quit
+
     """)
     ans=input(">>What option would you like to choose? ")
     if ans=="1":
@@ -451,8 +442,12 @@ while ans:
     elif ans=="3":
       OtherBills()
     elif ans=="4":
-      print("\n Goodbye")
-      ans = None
-      break
+        All_Bills(current_user)
+
+    elif ans =="5":
+        print("\n Goodbye")
+        ans = None
+        break
+
     elif ans !="":
-      print("\n Not Valid Choice Try again")
+        print("\n Not Valid Choice Try again")

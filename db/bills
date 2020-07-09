@@ -1,2 +1,5 @@
-1230123,<class 'bills.CableBill'>
-('220', '13', '124'),2000002
+
+1,<class 'bills.CableBill'>
+('2020', '7', '9'),1000,Franc
+2,<class 'bills.CableBill'>
+('2020', '7', '10'),2000,Franc
