@@ -36,13 +36,13 @@ from bills import BooksBill
 from bills import FoodBill
 from bills import School_TransportBill
 from bills import CoursesBill
-
-db=Database(dbname="Bills")
+db=Database(dbname="db")
 
 class User(BaseObject):
-    def __init__(self,username,password,usertype):
-        self.__username = username
-        self.__password = password
+    def __init__(self,Username,Password,usertype,Email):
+        self.__username = Username
+        self.__password = Password
+        self._email=Email
         self.setUserType(usertype)
 
     def setUserType(self,utype="user"):
@@ -159,7 +159,51 @@ def main():
         print("do you want to login : [y]")
         if input(">")!="y":
             break
+def Creating_NewUser():
+    Username=str(input("Please enter your username"))
+    Email=str(input("Please enter your email"))
+    Password=str(input("Please enter your password"))
+    db.createtableifnotexists("users",User,User.fromline)  #This one is the problem it sais User has no attributes
 
+def OldUser():
+    Email=str(input("Please enter your email"))
+    Password=str(input("Please enter your password"))
+
+def sorry():
+    print("Sorry we couldnt help!")
+
+def newUser():
+    Creating_NewUser()
+    users=db.getObjectsFrom("users",lambda x:(x._username==Username))
+    if len(users)>0 :
+        print("\nLogin name already exist!\n")
+    else:
+        user=User(Username,Email,Password)
+        db.appendObjectsInto("users",[user])
+        print(User.toString())
+        print("\nUser created\n")
+    oldUser()
+
+def oldUser():
+    OldUser()
+    users=db.getObjectsFrom("users",lambda x:(x._email==Email and x._password==Password))
+    if len(users)==1:
+        print("\nLogin successful!\n")
+    else:
+        print("\nUser doesn't exist or wrong password!\n")
+
+def displayMenu():
+    status = input("Are you registered user? y/n? Press q to quit")
+    if status == "y":
+        oldUser()
+    elif status == "n":
+        newUser()
+    elif status == "q":
+        sorry()
+    else:
+        print("That is not a viable answer!")
+
+displayMenu()
 
 def Creating_NewBill(an):
         ID=input("Enter the id of the bill")
@@ -167,10 +211,11 @@ def Creating_NewBill(an):
         month=input("Enter the month")
         day=input("Enter the day")
         price=input("Enter the price of the bill")
+        user=Username
 
-        bill=an(ID,an,year,month,day,price)
-        db.createtableifnotexists("MonthlyBills",an,an.fromline)
-        db.appendObjectsInto("MonthlyBills",[bill])
+        bill=an(ID,an,year,month,day,price,user)
+        db.createtableifnotexists("bills",an,an.fromline)
+        db.appendObjectsInto("bills",[bill])
         ans3="0"
         ans4="0"
         print(bill.toString())
